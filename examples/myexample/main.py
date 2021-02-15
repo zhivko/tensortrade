@@ -158,9 +158,9 @@ window_size = 30
 ray.init(local_mode=True)
 
 # Get checkpoint
+# c:\work\git\tensortrade\examples\myexample\Experiments\PPO\PPO_TradingEnv_442e0_00000_0_2021-02-15_02-51-05\checkpoint_1080\
 pname = "PPO_TradingEnv_442e0_00000_0_2021-02-15_02-51-05"
-# c:\work\klemen\rlagent\Experiments\PPO\PPO_TradingEnv_0e8da_00000_0_2021-02-14_18-35-40
-checkpoint_path = "c:/work/klemen/rlagent/Experiments/PPO/" + pname + "/checkpoint_1080/checkpoint-1080"
+checkpoint_path = "c:/work/git/tensortrade/examples/myexample/Experiments/PPO/" + pname + "/checkpoint_1080/checkpoint-1080"
 
 analysis = tune.run(
     "PPO",
@@ -198,8 +198,19 @@ analysis = tune.run(
         "framework": "torch",
         "ignore_worker_failures": True,
         # "num_workers": 3,  #max
-        "num_workers": 3,
+        #"num_gpus": 1,
+        
+#gpu_count = n
+#num_gpus = 0.0001 # Driver GPU
+#num_gpus_per_worker = (gpu_count - num_gpus) / num_workers        
+        
+        
+        "num_workers": 3, 
         "num_gpus": 1,
+        #"train_batch_size": 200, 
+        #"rollout_fragment_length": 200, 
+        
+        
         "clip_rewards": False,
 
         "lr": 5e-5,
@@ -216,6 +227,6 @@ analysis = tune.run(
     checkpoint_freq=20,  # new
     checkpoint_at_end=True,
     # restore="c:\work\klemen\rlagent\Experiments\",
-    local_dir='c:/work/klemen/rlagent/Experiments',
+    local_dir='c:/work/git/tensortrade/examples/myexample/Experiments',
     restore=checkpoint_path
 )
