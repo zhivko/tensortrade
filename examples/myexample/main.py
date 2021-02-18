@@ -158,9 +158,9 @@ window_size = 30
 ray.init(local_mode=True)
 
 # Get checkpoint
-# c:\work\git\tensortrade\examples\myexample\Experiments\PPO\PPO_TradingEnv_442e0_00000_0_2021-02-15_02-51-05\checkpoint_1080\
-pname = "PPO_TradingEnv_442e0_00000_0_2021-02-15_02-51-05"
-checkpoint_path = "c:/work/git/tensortrade/examples/myexample/Experiments/PPO/" + pname + "/checkpoint_1080/checkpoint-1080"
+# c:\work\git\tensortrade\examples\myexample\Experiments\PPO\PPO_TradingEnv_2eecd_00000_0_2021-02-15_20-08-27\checkpoint_1120\checkpoint-1120
+pname = "PPO_TradingEnv_222c2_00000_0_2021-02-16_07-42-27"
+checkpoint_path = "c:/work/git/tensortrade/examples/myexample/Experiments/PPO/" + pname + "/checkpoint_1140/checkpoint-1140"
 
 analysis = tune.run(
     "PPO",
