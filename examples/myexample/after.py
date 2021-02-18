@@ -107,16 +107,17 @@ def create_env(config, train="train"):
 
 # Get checkpoint
 window_size = 30
-pname = "PPO_TradingEnv_442e0_00000_0_2021-02-15_02-51-05"
-# c:\work\klemen\rlagent\Experiments\PPO\PPO_TradingEnv_0e8da_00000_0_2021-02-14_18-35-40
-checkpoint_path = "c:/work/klemen/rlagent/Experiments/PPO/" + pname + "/checkpoint_1080/checkpoint-1080"
+pname = "PPO_TradingEnv_81799_00000_0_2021-02-18_20-21-31"
+# c:\work\git\tensortrade\examples\myexample\Experiments\PPO\PPO_TradingEnv_8c527_00000_0_2021-02-16_13-21-51\checkpoint_2000\
+checkpoint_path = "c:/work/klemen/rlagent/Experiments/PPO/" + pname + "/checkpoint_2000/checkpoint-2000"
 
 ray.init(local_mode=True)
 
 # Restore agent
 agent = ppo.PPOTrainer(
-    env="TradingEnv",
+    #env="TradingEnv",
     config={
+        "env": "TradingEnv-v2",
         "env_config": {
             "window_size": window_size
         },
@@ -144,22 +145,19 @@ agent = ppo.PPOTrainer(
         "log_level": "DEBUG",
         "framework": "torch",
         "ignore_worker_failures": True,
-        # "num_workers": 3,  #max
         "num_workers": 3,
         'num_gpus': 1,
         "clip_rewards": False,
-
         "gamma": 0,
-
         "observation_filter": "MeanStdFilter",
         # "observation_filter": MyStdFilter,  # demean=False, destd=True rewrd = -3.04045e+06 after 1000
         # "observation_filter": "NoFilter",     # => reward -1.12313e+08 after 1000 iterations
-
         "lambda": 0.72,
         # "vf_loss_coeff": 0.5,
         "vf_loss_coeff": 1.0,
         # "entropy_coeff": 0.01
         "entropy_coeff": 0.1,
+        "lr": 5e-5,
 
         # 'rollout_fragment_length': 300,
     }

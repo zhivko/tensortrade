@@ -152,15 +152,16 @@ def create_env(config, train="train"):
 
 
 register_env("TradingEnv", create_env)
+#register_env("TradingEnv", lambda _: TradingEnv(num_agents=3))
 
 window_size = 30
 
 ray.init(local_mode=True)
 
 # Get checkpoint
-# c:\work\git\tensortrade\examples\myexample\Experiments\PPO\PPO_TradingEnv_442e0_00000_0_2021-02-15_02-51-05\checkpoint_1080\
-pname = "PPO_TradingEnv_442e0_00000_0_2021-02-15_02-51-05"
-checkpoint_path = "c:/work/git/tensortrade/examples/myexample/Experiments/PPO/" + pname + "/checkpoint_1080/checkpoint-1080"
+# c:\work\git\tensortrade\examples\myexample\Experiments\PPO\PPO_TradingEnv_2eecd_00000_0_2021-02-15_20-08-27\checkpoint_1120\checkpoint-1120
+pname = "PPO_TradingEnv_8c527_00000_0_2021-02-16_13-21-51"
+checkpoint_path = "c:/work/git/tensortrade/examples/myexample/Experiments/PPO/" + pname + "/checkpoint_1980/checkpoint-1980"
 
 analysis = tune.run(
     "PPO",
@@ -200,17 +201,8 @@ analysis = tune.run(
         # "num_workers": 3,  #max
         #"num_gpus": 1,
         
-#gpu_count = n
-#num_gpus = 0.0001 # Driver GPU
-#num_gpus_per_worker = (gpu_count - num_gpus) / num_workers        
-        
-        
         "num_workers": 3, 
         "num_gpus": 1,
-        #"train_batch_size": 200, 
-        #"rollout_fragment_length": 200, 
-        
-        
         "clip_rewards": False,
 
         "lr": 5e-5,
