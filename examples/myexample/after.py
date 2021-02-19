@@ -117,7 +117,11 @@ ray.init(local_mode=True)
 agent = ppo.PPOTrainer(
     #env="TradingEnv",
     config={
-        "env": "TradingEnv2",
+        #"env": "TradingEnv",  #this gives:   File "C:\Python\Python38\lib\site-packages\gym\envs\registration.py", line 118, in spec
+                                        #raise error.Error('Attempted to look up malformed environment ID: {}. (Currently all IDs must be of the form {}.)'.format(id.encode('utf-8'), env_id_re.pattern))
+                                        #gym.error.Error: Attempted to look up malformed environment ID: b'TradingEnv'. (Currently all IDs must be of the form ^(?:[\w:-]+\/)?([\w:.-]+)-v(\d+)$.)
+        
+        "env": "TradingEnv-v1",
         "env_config": {
             "window_size": window_size
         },
