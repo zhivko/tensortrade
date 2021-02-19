@@ -107,7 +107,7 @@ def create_env(config, train="train"):
 
 # Get checkpoint
 window_size = 30
-pname = "PPO_TradingEnv_81799_00000_0_2021-02-18_20-21-31"
+pname = "PPO_TradingEnv_8c527_00000_0_2021-02-16_13-21-51"
 # c:\work\git\tensortrade\examples\myexample\Experiments\PPO\PPO_TradingEnv_8c527_00000_0_2021-02-16_13-21-51\checkpoint_2000\
 checkpoint_path = "c:/work/klemen/rlagent/Experiments/PPO/" + pname + "/checkpoint_2000/checkpoint-2000"
 
@@ -117,7 +117,7 @@ ray.init(local_mode=True)
 agent = ppo.PPOTrainer(
     #env="TradingEnv",
     config={
-        "env": "TradingEnv-v2",
+        "env": "TradingEnv2",
         "env_config": {
             "window_size": window_size
         },
